@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello Liste des catégorie!{% endblock %}
+
+{% block body %}
+<div class="container">
+
+    <a href="{{ path('userAdd')}}">
+        <p class="btn btn-outline-success my-2 my-sm-0">
+            Ajouter un utilisateur</p>
+    </a>
+
+    <table class="table">
+        <tr>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Editer</th>
+            <th>Effacer</th>
+        </tr>
+        {% for user in userList %}
+        <tr>
+            <td>{{user.email}}</td>
+            <td>{{user.roles[0]}}</td>
+            <td><a href="{{path('userEdit',{id:user.id})}}">Editer</a></td>
+            <td><a href="{{path('userDelete',{id:user.id})}}">Effacer User</a></td>
+        </tr>
+
+        <br>
+
+        {% endfor %}
+    </table>
+
+
+</div>
+{% endblock %}
